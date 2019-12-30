@@ -1,0 +1,87 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <a routerLink="/">
+        <img width="40" alt="School Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+        />
+    </a>
+    <span>Student Registration</span>
+    <div class="spacer"></div>
+</div>
+
+<div class="container content">
+    <div [hidden]="submitted">
+        <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+            <div class="form-group">
+                <label for="name">Student Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.name" name="name" #name="ngModel">
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Student name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="className">Class Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.className" name="className" #className="ngModel">
+                <div [hidden]="className.valid || className.pristine" class="alert alert-danger">
+                    Class Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="schoolName">School Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.schoolName" name="schoolName" #schoolName="ngModel">
+                <div [hidden]="schoolName.valid || schoolName.pristine" class="alert alert-danger">
+                    School Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fatherName">Father Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.fatherName" name="fatherName" #fatherName="ngModel">
+                <div [hidden]="fatherName.valid || fatherName.pristine" class="alert alert-danger">
+                    Father Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.mobileNumber" name="mobileNumber" #mobileNumber="ngModel">
+                <div [hidden]="mobileNumber.valid || mobileNumber.pristine" class="alert alert-danger">
+                    Mobile Number is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="whatsappNumber">Whatsapp Number</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.whatsappNumber" name="whatsappNumber" #whatsappNumber="ngModel">
+                <div [hidden]="whatsappNumber.valid || whatsappNumber.pristine" class="alert alert-danger">
+                    Whatsapp Number is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email ID</label>
+                <input type="text" class="form-control" required [(ngModel)]="registration.email" name="email" #email="ngModel">
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    Email ID is required
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-light" [disabled]="!registrationForm.form.valid">Register</button>
+            <button type="button" class="btn btn-light" (click)="registrationForm.reset()">Reset</button>
+        </form>
+    </div>
+
+    <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">Student Name: </div>
+            <div class="col-xs-9  pull-left"> {{ registration.name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">School Name: </div>
+            <div class="col-xs-9 pull-left"> {{ registration.schoolName }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Contact Number: </div>
+            <div class="col-xs-9 pull-left"> {{ registration.mobileNumber }}</div>
+        </div>
+        <br>
+        <button class="btn btn-light" (click)="submitted=false">Edit</button>
+    </div>
+</div>
